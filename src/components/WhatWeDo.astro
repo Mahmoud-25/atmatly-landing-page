@@ -1,0 +1,102 @@
+---
+const services = [
+  {
+    en: { title: 'Lead Automation Systems', desc: 'Capture, qualify, and route leads automatically. Every inquiry gets an instant response, no manual work needed.' },
+    ar: { title: 'أنظمة أتمتة العملاء', desc: 'التقاط العملاء المحتملين وتأهيلهم وتوجيههم تلقائياً. كل استفسار يحصل على رد فوري بدون عمل يدوي.' },
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />`,
+    color: 'emerald',
+  },
+  {
+    en: { title: 'CRM & Sales Pipelines', desc: 'Automate your entire sales pipeline. Track deals, send follow-ups, and close more customers without lifting a finger.' },
+    ar: { title: 'CRM وخطوط المبيعات', desc: 'أتمتة خط سير مبيعاتك بالكامل. تتبع الصفقات وأرسل المتابعات وأغلق المزيد من العملاء تلقائياً.' },
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />`,
+    color: 'blue',
+  },
+  {
+    en: { title: 'Content Publishing Automation', desc: 'Schedule and publish content across all your social media platforms simultaneously with one click.' },
+    ar: { title: 'أتمتة نشر المحتوى', desc: 'جدوِل وانشر المحتوى على جميع منصات التواصل الاجتماعي في نفس الوقت بنقرة واحدة.' },
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />`,
+    color: 'violet',
+  },
+  {
+    en: { title: 'Reporting & Dashboards', desc: 'Get real-time business insights automatically. Stop building reports manually — let the system do it for you.' },
+    ar: { title: 'التقارير ولوحات المعلومات', desc: 'احصل على رؤى أعمال فورية تلقائياً. توقف عن بناء التقارير يدوياً — دع النظام يفعلها عنك.' },
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />`,
+    color: 'amber',
+  },
+  {
+    en: { title: 'AI Knowledge Assistants', desc: 'Deploy smart AI chatbots trained on your business data — answer customer questions 24/7 in Arabic and English.' },
+    ar: { title: 'مساعدو الذكاء الاصطناعي', desc: 'نشر روبوتات ذكاء اصطناعي مدربة على بياناتك تجيب على أسئلة العملاء 24/7 بالعربية والإنجليزية.' },
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />`,
+    color: 'cyan',
+  },
+  {
+    en: { title: 'Custom Business Automations', desc: 'Have a unique workflow? We design fully custom automation systems tailored exactly to how your business operates.' },
+    ar: { title: 'أتمتة مخصصة للأعمال', desc: 'لديك سير عمل فريد؟ نصمم أنظمة أتمتة مخصصة تماماً لكيفية عمل شركتك.' },
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />`,
+    color: 'rose',
+  },
+];
+
+const colorMap: Record<string, { bg: string; icon: string; ring: string }> = {
+  emerald: { bg: 'bg-emerald-50', icon: 'text-emerald-600', ring: 'ring-emerald-100' },
+  blue:    { bg: 'bg-blue-50',    icon: 'text-blue-600',    ring: 'ring-blue-100' },
+  violet:  { bg: 'bg-violet-50',  icon: 'text-violet-600',  ring: 'ring-violet-100' },
+  amber:   { bg: 'bg-amber-50',   icon: 'text-amber-600',   ring: 'ring-amber-100' },
+  cyan:    { bg: 'bg-cyan-50',    icon: 'text-cyan-600',    ring: 'ring-cyan-100' },
+  rose:    { bg: 'bg-rose-50',    icon: 'text-rose-600',    ring: 'ring-rose-100' },
+};
+---
+
+<section id="services" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14">
+      <div class="inline-flex items-center px-3 py-1 bg-emerald-100 text-emerald-700 text-sm font-semibold rounded-full mb-4">
+        <span data-lang="en">What We Build</span><span data-lang="ar">ما نبنيه</span>
+      </div>
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+        <span data-lang="en">Smart Systems. Real Results.</span>
+        <span data-lang="ar">أنظمة ذكية. نتائج حقيقية.</span>
+      </h2>
+      <p class="text-lg text-slate-500 max-w-2xl mx-auto">
+        <span data-lang="en">We design and implement business automation systems tailored for Saudi startups and SMEs.</span>
+        <span data-lang="ar">نصمم وننفذ أنظمة أتمتة أعمال مخصصة للشركات الناشئة والصغيرة في المملكة العربية السعودية.</span>
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {services.map((service) => {
+        const c = colorMap[service.color];
+        return (
+          <div class="group p-6 bg-white rounded-2xl border border-slate-100 hover:border-slate-200 hover:shadow-lg transition-all duration-300">
+            <div class={`w-12 h-12 ${c.bg} rounded-xl flex items-center justify-center mb-5 ring-4 ${c.ring} group-hover:scale-110 transition-transform duration-300`}>
+              <svg class={`w-6 h-6 ${c.icon}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" set:html={service.icon} />
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">
+              <span data-lang="en">{service.en.title}</span>
+              <span data-lang="ar">{service.ar.title}</span>
+            </h3>
+            <p class="text-sm text-slate-500 leading-relaxed">
+              <span data-lang="en">{service.en.desc}</span>
+              <span data-lang="ar">{service.ar.desc}</span>
+            </p>
+          </div>
+        );
+      })}
+    </div>
+
+    <div class="mt-12 text-center">
+      <p class="text-slate-500 text-sm mb-4">
+        <span data-lang="en">Don't see what you need? We build custom solutions too.</span>
+        <span data-lang="ar">لم تجد ما تحتاجه؟ نبني حلولاً مخصصة أيضاً.</span>
+      </p>
+      <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 border-2 border-emerald-600 text-emerald-600 font-semibold rounded-xl hover:bg-emerald-600 hover:text-white transition-all duration-200 text-sm">
+        <span data-lang="en">Discuss Your Project</span>
+        <span data-lang="ar">ناقش مشروعك</span>
+        <svg class="w-4 h-4 arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

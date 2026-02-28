@@ -1,0 +1,106 @@
+---
+interface Props {
+  ctaUrl?: string;
+  ctaLabel?: string;
+  email?: string;
+}
+const {
+  ctaUrl = '#contact',
+  ctaLabel = 'Book Free Strategy Call',
+  email = 'hello@atmatly.com',
+} = Astro.props;
+---
+
+<section
+  id="contact"
+  class="py-24 relative overflow-hidden"
+  style="background: linear-gradient(135deg, #064e3b 0%, #065f46 40%, #0d2818 70%, #0f172a 100%);"
+>
+  <!-- Background decoration -->
+  <div
+    class="absolute inset-0 opacity-10"
+    style="background-image: linear-gradient(rgba(16,185,129,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(16,185,129,0.3) 1px, transparent 1px); background-size: 50px 50px;"
+  ></div>
+  <div
+    class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-64 rounded-full blur-3xl opacity-20"
+    style="background: radial-gradient(circle, #10b981, transparent);"
+  ></div>
+
+  <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium mb-8 border"
+      style="background: rgba(16,185,129,0.15); border-color: rgba(16,185,129,0.4); color: #6ee7b7;">
+      <span class="w-2 h-2 bg-emerald-400 rounded-full" style="animation: pulse 2s infinite;"></span>
+      <span data-lang="en">Ready to get started?</span>
+      <span data-lang="ar">مستعد للبدء؟</span>
+    </div>
+
+    <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-6 leading-tight">
+      <span data-lang="en">Ready to Automate<br class="hidden sm:block" /> Your Business?</span>
+      <span data-lang="ar">مستعد لأتمتة<br class="hidden sm:block" /> عملك؟</span>
+    </h2>
+
+    <p class="text-xl text-emerald-100/70 mb-10 max-w-2xl mx-auto leading-relaxed">
+      <span data-lang="en">Let's discuss how automation can reduce your workload and increase efficiency. Your first strategy call is completely free.</span>
+      <span data-lang="ar">دعنا نناقش كيف يمكن للأتمتة تقليل عبء عملك وزيادة الكفاءة. مكالمتك الاستراتيجية الأولى مجانية تماماً.</span>
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+      <a
+        href={ctaUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-emerald-900 font-extrabold rounded-xl text-base transition-all duration-200 hover:bg-emerald-50 hover:-translate-y-0.5 shadow-2xl"
+      >
+        <span data-lang="en">{ctaLabel}</span>
+        <span data-lang="ar">احجز مكالمتك المجانية</span>
+        <svg class="w-5 h-5 arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+        </svg>
+      </a>
+      <a
+        href={`mailto:${email}`}
+        class="inline-flex items-center justify-center gap-2 px-8 py-4 font-semibold rounded-xl text-base transition-all duration-200 border-2 border-white/20 text-white hover:border-white/40 hover:bg-white/5"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+        <span data-lang="en">Send Us an Email</span>
+        <span data-lang="ar">راسلنا عبر البريد</span>
+      </a>
+    </div>
+
+    <!-- Trust points -->
+    <div class="flex flex-wrap items-center justify-center gap-6 text-sm" style="color: #6ee7b7;">
+      <div class="flex items-center gap-2">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span data-lang="en">Free 30-min Strategy Call</span>
+        <span data-lang="ar">مكالمة استراتيجية مجانية 30 دقيقة</span>
+      </div>
+      <div class="w-px h-4 bg-emerald-700"></div>
+      <div class="flex items-center gap-2">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span data-lang="en">No Commitment Required</span>
+        <span data-lang="ar">بدون أي التزام</span>
+      </div>
+      <div class="w-px h-4 bg-emerald-700"></div>
+      <div class="flex items-center gap-2">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span data-lang="en">Arabic &amp; English Support</span>
+        <span data-lang="ar">دعم بالعربية والإنجليزية</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+</style>

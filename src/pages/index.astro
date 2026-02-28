@@ -1,0 +1,62 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getEntry, getCollection } from 'astro:content';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import Problem from '../components/Problem.astro';
+import WhatWeDo from '../components/WhatWeDo.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import Packages from '../components/Packages.astro';
+import WhyUs from '../components/WhyUs.astro';
+import FinalCTA from '../components/FinalCTA.astro';
+import Footer from '../components/Footer.astro';
+import ChatWidget from '../components/ChatWidget.astro';
+import '../styles/global.css';
+
+const settingsEntry = await getEntry('settings', 'general');
+if (!settingsEntry) throw new Error('Settings content not found. Make sure src/content/settings/general.md exists.');
+const { data: settings } = settingsEntry;
+
+const packagesRaw = await getCollection('packages');
+const packages = packagesRaw
+  .sort((a, b) => a.data.order - b.data.order)
+  .map((p) => p.data);
+---
+
+<Layout title={settings.site_title}>
+  <Navbar ctaUrl={settings.cta_url} />
+
+  <Hero
+    headline={settings.hero_headline}
+    subheadline={settings.hero_subheadline}
+    ctaUrl={settings.cta_url}
+    ctaLabel={settings.cta_label}
+  />
+
+  <Problem />
+
+  <WhatWeDo />
+
+  <HowItWorks />
+
+  <Packages
+    packages={packages}
+    discount={settings.show_discount ? settings.discount_percentage : 0}
+    discountLabel={settings.discount_label}
+  />
+
+  <WhyUs />
+
+  <FinalCTA
+    ctaUrl={settings.cta_url}
+    ctaLabel={settings.cta_label}
+    email={settings.contact_email}
+  />
+
+  <Footer
+    email={settings.contact_email}
+    whatsapp={settings.contact_whatsapp}
+  />
+
+  <ChatWidget />
+</Layout>

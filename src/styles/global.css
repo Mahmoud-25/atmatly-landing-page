@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+html { scroll-behavior: smooth; }
+
+body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+
+/* Arabic font */
+html[lang="ar"] body { font-family: 'Cairo', system-ui, sans-serif; }
+
+/* ─── Language visibility ─────────────────────────────── */
+/* Exclude .lang-btn so toggle buttons are always visible */
+:not(.lang-btn)[data-lang="ar"] { display: none; }
+
+html[lang="ar"] :not(.lang-btn)[data-lang="ar"] { display: revert; }
+html[lang="ar"] :not(.lang-btn)[data-lang="en"] { display: none; }
+
+/* ─── Lang toggle active state (pure CSS via html[lang]) ── */
+.lang-btn {
+  padding: 0.2rem 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  border-radius: 0.35rem;
+  transition: all 0.15s ease;
+  color: #64748b;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+html[lang="en"] .lang-btn[data-lang="en"],
+html[lang="ar"] .lang-btn[data-lang="ar"] {
+  background: white;
+  color: #0f172a;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* ─── RTL: flip directional arrows ───────────────────── */
+html[lang="ar"] .arrow-icon { transform: scaleX(-1); }
+
+/* Tailwind color class safelist */
+.color-green-bar { background-color: #10b981; }
+.color-blue-bar  { background-color: #2563eb; }
+.color-purple-bar{ background-color: #7c3aed; }
+.color-gold-bar  { background-color: #f59e0b; }

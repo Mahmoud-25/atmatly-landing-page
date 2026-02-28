@@ -1,0 +1,70 @@
+---
+const reasons = [
+  {
+    en: { title: 'Automation-First Approach', description: 'We specialize exclusively in business automation — not just websites. Every solution is built to eliminate manual work.' },
+    ar: { title: 'نهج الأتمتة أولاً', description: 'نتخصص حصرياً في أتمتة الأعمال — وليس فقط المواقع. كل حل مبني للقضاء على العمل اليدوي.' },
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />`,
+  },
+  {
+    en: { title: 'Built for Saudi Market', description: 'Deep understanding of Saudi business culture, regulations, and market dynamics. We speak your language — literally.' },
+    ar: { title: 'مبني للسوق السعودي', description: 'فهم عميق لثقافة الأعمال السعودية واللوائح وديناميكيات السوق. نتحدث لغتك — حرفياً.' },
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />`,
+  },
+  {
+    en: { title: 'Fully Bilingual Systems', description: 'All automation systems work seamlessly in Arabic and English — serving your customers in their preferred language.' },
+    ar: { title: 'أنظمة ثنائية اللغة بالكامل', description: 'جميع أنظمة الأتمتة تعمل بسلاسة بالعربية والإنجليزية — تخدم عملاءك بلغتهم المفضلة.' },
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />`,
+  },
+  {
+    en: { title: 'Startup-Friendly', description: 'We understand the startup mindset. Lean, efficient solutions with clear ROI — no bloated enterprise pricing or complexity.' },
+    ar: { title: 'مناسب للشركات الناشئة', description: 'نفهم عقلية الشركات الناشئة. حلول مرنة وفعّالة بعائد واضح على الاستثمار — بدون تعقيدات أو أسعار مبالغ فيها.' },
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z" />`,
+  },
+  {
+    en: { title: 'Clear Pricing. No Surprises.', description: 'Every project is quoted upfront with a full breakdown. What you see is what you pay — no hidden fees, ever.' },
+    ar: { title: 'أسعار واضحة. بدون مفاجآت.', description: 'كل مشروع يُسعَّر مسبقاً مع تفصيل كامل. ما تراه هو ما تدفعه — بدون رسوم خفية أبداً.' },
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />`,
+  },
+  {
+    en: { title: 'Dedicated Support', description: 'Every package includes dedicated post-launch support. We stay by your side until everything runs smoothly.' },
+    ar: { title: 'دعم مخصص', description: 'كل باقة تشمل دعماً مخصصاً بعد الإطلاق. نبقى بجانبك حتى يسير كل شيء بسلاسة.' },
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />`,
+  },
+];
+---
+
+<section id="why-us" class="py-24 bg-slate-900">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14">
+      <div class="inline-flex items-center px-3 py-1 bg-emerald-900 text-emerald-400 text-sm font-semibold rounded-full mb-4 border border-emerald-800">
+        <span data-lang="en">Why Atmatly</span><span data-lang="ar">لماذا أتمتلي</span>
+      </div>
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+        <span data-lang="en">Built Different. Built for You.</span>
+        <span data-lang="ar">مختلفون. مبنيون لك.</span>
+      </h2>
+      <p class="text-lg text-slate-400 max-w-2xl mx-auto">
+        <span data-lang="en">We're not a generic agency. We're automation specialists focused on one thing — making your business run smarter.</span>
+        <span data-lang="ar">لسنا وكالة عادية. نحن متخصصون في الأتمتة نركز على شيء واحد — جعل عملك يعمل بذكاء أكبر.</span>
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {reasons.map((reason) => (
+        <div class="group p-6 bg-slate-800/50 rounded-2xl border border-slate-700 hover:border-emerald-700/50 hover:bg-slate-800 transition-all duration-300">
+          <div class="w-11 h-11 bg-emerald-900/50 rounded-xl flex items-center justify-center mb-5 border border-emerald-800/50 group-hover:bg-emerald-900 group-hover:border-emerald-700 transition-all duration-300">
+            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" set:html={reason.icon} />
+          </div>
+          <h3 class="text-base font-bold text-white mb-2">
+            <span data-lang="en">{reason.en.title}</span>
+            <span data-lang="ar">{reason.ar.title}</span>
+          </h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            <span data-lang="en">{reason.en.description}</span>
+            <span data-lang="ar">{reason.ar.description}</span>
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

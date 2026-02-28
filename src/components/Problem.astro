@@ -1,0 +1,72 @@
+---
+const problems = [
+  { en: 'Manually replying to leads one by one',            ar: 'الرد على العملاء المحتملين يدوياً واحداً تلو الآخر' },
+  { en: 'Updating spreadsheets and reports daily',          ar: 'تحديث جداول البيانات والتقارير يومياً' },
+  { en: 'Sending weekly reports by hand',                   ar: 'إرسال التقارير الأسبوعية يدوياً' },
+  { en: 'Posting content one platform at a time',           ar: 'نشر المحتوى على كل منصة بشكل منفصل' },
+  { en: 'Following up with customers manually',             ar: 'متابعة العملاء يدوياً' },
+  { en: 'Losing leads because no one responded in time',    ar: 'خسارة عملاء لعدم الرد في الوقت المناسب' },
+];
+---
+
+<section id="problem" class="py-24 bg-slate-50">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center px-3 py-1 bg-red-100 text-red-700 text-sm font-semibold rounded-full mb-4">
+        <span data-lang="en">Sound familiar?</span>
+        <span data-lang="ar">ألا يبدو هذا مألوفاً؟</span>
+      </div>
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+        <span data-lang="en">Are You Still Doing This <span class="text-red-500">Manually?</span></span>
+        <span data-lang="ar">هل لا تزال تفعل هذا <span class="text-red-500">يدوياً؟</span></span>
+      </h2>
+      <p class="text-lg text-slate-500 max-w-2xl mx-auto">
+        <span data-lang="en">Most Saudi businesses waste hours every week on repetitive tasks that can be fully automated.</span>
+        <span data-lang="ar">معظم الشركات السعودية تضيع ساعات أسبوعياً في مهام متكررة يمكن أتمتتها بالكامل.</span>
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-3 mb-10">
+      {problems.map((p) => (
+        <div class="flex items-start gap-3 p-4 bg-white rounded-xl border border-red-100 hover:border-red-200 hover:shadow-sm transition-all duration-200 group">
+          <div class="flex-shrink-0 w-8 h-8 bg-red-100 group-hover:bg-red-200 rounded-full flex items-center justify-center transition-colors mt-0.5">
+            <svg class="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </div>
+          <span class="text-slate-700 font-medium text-sm leading-relaxed">
+            <span data-lang="en">{p.en}</span>
+            <span data-lang="ar">{p.ar}</span>
+          </span>
+        </div>
+      ))}
+    </div>
+
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <div class="flex items-center gap-3 px-6 py-4 bg-emerald-50 border border-emerald-200 rounded-2xl">
+        <div class="flex-shrink-0 w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center">
+          <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+        </div>
+        <div>
+          <p class="text-slate-800 font-bold">
+            <span data-lang="en">This wastes time.</span>
+            <span data-lang="ar">هذا يضيع وقتك.</span>
+          </p>
+          <p class="text-emerald-600 font-semibold text-sm">
+            <span data-lang="en">Automation fixes all of it.</span>
+            <span data-lang="ar">الأتمتة تحل كل ذلك.</span>
+          </p>
+        </div>
+      </div>
+      <a href="#services" class="inline-flex items-center gap-2 px-6 py-4 bg-slate-900 text-white font-semibold rounded-2xl hover:bg-emerald-700 transition-all duration-200 text-sm">
+        <span data-lang="en">See What We Build</span>
+        <span data-lang="ar">اكتشف ما نبنيه</span>
+        <svg class="w-4 h-4 arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

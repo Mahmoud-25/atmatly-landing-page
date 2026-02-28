@@ -1,0 +1,161 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - name: "general"
+        label: "General Settings"
+        file: "src/content/settings/general.md"
+        fields:
+          - label: "Site Title"
+            name: "site_title"
+            widget: "string"
+            hint: "Appears in the browser tab"
+
+          - label: "Hero Headline"
+            name: "hero_headline"
+            widget: "string"
+            hint: "Main headline shown in the hero section"
+
+          - label: "Hero Subheadline"
+            name: "hero_subheadline"
+            widget: "text"
+            hint: "Supporting text below the headline"
+
+          - label: "Show Discount Banner"
+            name: "show_discount"
+            widget: "boolean"
+            default: true
+            hint: "Toggle the discount banner on/off site-wide"
+
+          - label: "Discount Percentage (%)"
+            name: "discount_percentage"
+            widget: "number"
+            min: 0
+            max: 100
+            default: 25
+            hint: "Percentage discount shown on all packages (0 = no discount). You can change this any time."
+
+          - label: "Discount Label"
+            name: "discount_label"
+            widget: "string"
+            default: "Special Launch Offer"
+            hint: "Text shown on the discount banner (e.g. 'Ramadan Offer', 'Special Launch Offer')"
+
+          - label: "CTA Button Label"
+            name: "cta_label"
+            widget: "string"
+            default: "Book Free Strategy Call"
+
+          - label: "Booking / CTA URL"
+            name: "cta_url"
+            widget: "string"
+            required: false
+            hint: "Calendly link or any booking URL"
+
+          - label: "Contact Email"
+            name: "contact_email"
+            widget: "string"
+            required: false
+
+          - label: "WhatsApp Number"
+            name: "contact_whatsapp"
+            widget: "string"
+            required: false
+            hint: "Format: +966500000000"
+
+  - name: "packages"
+    label: "Packages"
+    folder: "src/content/packages"
+    create: false
+    slug: "{{slug}}"
+    fields:
+      - label: "Package Name (English)"
+        name: "name"
+        widget: "string"
+
+      - label: "Package Name (Arabic / اسم الباقة)"
+        name: "name_ar"
+        widget: "string"
+        required: false
+
+      - label: "Tagline (English)"
+        name: "tagline"
+        widget: "string"
+        hint: "Short description shown under the package name"
+
+      - label: "Tagline (Arabic / الوصف المختصر)"
+        name: "tagline_ar"
+        widget: "string"
+        required: false
+
+      - label: "Price (USD)"
+        name: "price"
+        widget: "number"
+        required: false
+        hint: "Base price before discount"
+
+      - label: "Price Suffix"
+        name: "price_suffix"
+        widget: "string"
+        required: false
+        hint: "e.g. '+' to show '$500+' for custom packages"
+
+      - label: "Color Theme"
+        name: "color"
+        widget: "select"
+        options:
+          - { label: "Green (Emerald)", value: "green" }
+          - { label: "Blue", value: "blue" }
+          - { label: "Purple (Violet)", value: "purple" }
+          - { label: "Gold (Amber)", value: "gold" }
+
+      - label: "Mark as Most Popular"
+        name: "is_popular"
+        widget: "boolean"
+        default: false
+        hint: "Highlights this package with a 'Most Popular' badge"
+
+      - label: "Is Custom Package"
+        name: "is_custom"
+        widget: "boolean"
+        default: false
+        hint: "If true, shows 'Starting from $X+' instead of a fixed price"
+
+      - label: "Display Order"
+        name: "order"
+        widget: "number"
+        hint: "Lower numbers appear first (1 = first)"
+
+      - label: "Focus / Category Tag (English)"
+        name: "focus"
+        widget: "string"
+        hint: "Short label shown as a colored tag (e.g. 'Process automation')"
+
+      - label: "Focus / Category Tag (Arabic / التصنيف)"
+        name: "focus_ar"
+        widget: "string"
+        required: false
+
+      - label: "Features List (English)"
+        name: "features"
+        widget: "list"
+        hint: "List of features included in this package"
+
+      - label: "Features List (Arabic / المميزات بالعربية)"
+        name: "features_ar"
+        widget: "list"
+        required: false
+        hint: "Arabic version of the features list"
+
+      - label: "Support Days"
+        name: "support_days"
+        widget: "number"
+        required: false
+        hint: "Number of post-launch support days included"

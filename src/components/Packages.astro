@@ -1,0 +1,304 @@
+---
+interface PackageData {
+  name: string;
+  name_ar?: string;
+  tagline: string;
+  tagline_ar?: string;
+  price?: number;
+  price_suffix?: string;
+  color: string;
+  is_popular: boolean;
+  is_custom: boolean;
+  order: number;
+  focus: string;
+  focus_ar?: string;
+  features: string[];
+  features_ar?: string[];
+  support_days?: number;
+}
+
+interface Props {
+  packages: PackageData[];
+  discount: number;
+  discountLabel?: string;
+}
+
+const { packages, discount, discountLabel = 'Special Launch Offer' } = Astro.props;
+const showDiscount = discount > 0;
+
+// All color classes written explicitly so Tailwind v4 scanner picks them up
+const colorConfig: Record<string, {
+  topBar: string;
+  badgeBg: string;
+  badgeText: string;
+  focusBg: string;
+  focusText: string;
+  checkColor: string;
+  btnBg: string;
+  btnHover: string;
+  popularRing: string;
+}> = {
+  green: {
+    topBar: 'bg-emerald-500',
+    badgeBg: 'bg-emerald-100',
+    badgeText: 'text-emerald-700',
+    focusBg: 'bg-emerald-50',
+    focusText: 'text-emerald-700',
+    checkColor: 'text-emerald-500',
+    btnBg: 'bg-emerald-600',
+    btnHover: 'hover:bg-emerald-700',
+    popularRing: '',
+  },
+  blue: {
+    topBar: 'bg-blue-600',
+    badgeBg: 'bg-blue-100',
+    badgeText: 'text-blue-700',
+    focusBg: 'bg-blue-50',
+    focusText: 'text-blue-700',
+    checkColor: 'text-blue-500',
+    btnBg: 'bg-blue-600',
+    btnHover: 'hover:bg-blue-700',
+    popularRing: '',
+  },
+  purple: {
+    topBar: 'bg-violet-600',
+    badgeBg: 'bg-violet-100',
+    badgeText: 'text-violet-700',
+    focusBg: 'bg-violet-50',
+    focusText: 'text-violet-700',
+    checkColor: 'text-violet-500',
+    btnBg: 'bg-violet-600',
+    btnHover: 'hover:bg-violet-700',
+    popularRing: 'ring-2 ring-violet-400 ring-offset-2',
+  },
+  gold: {
+    topBar: 'bg-amber-500',
+    badgeBg: 'bg-amber-100',
+    badgeText: 'text-amber-700',
+    focusBg: 'bg-amber-50',
+    focusText: 'text-amber-700',
+    checkColor: 'text-amber-500',
+    btnBg: 'bg-amber-500',
+    btnHover: 'hover:bg-amber-600',
+    popularRing: '',
+  },
+};
+
+function calcDiscounted(price: number, disc: number): number {
+  return Math.round(price * (1 - disc / 100));
+}
+---
+
+<section id="packages" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Section header -->
+    <div class="text-center mb-10">
+      <div class="inline-flex items-center px-3 py-1 bg-emerald-100 text-emerald-700 text-sm font-semibold rounded-full mb-4">
+        <span data-lang="en">Transparent Pricing</span><span data-lang="ar">أسعار شفافة</span>
+      </div>
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+        <span data-lang="en">Choose Your Package</span>
+        <span data-lang="ar">اختر باقتك</span>
+      </h2>
+      <p class="text-lg text-slate-500 max-w-2xl mx-auto">
+        <span data-lang="en">Every package is custom-built for your business. No templates, no shortcuts, no hidden costs.</span>
+        <span data-lang="ar">كل باقة مبنية خصيصاً لعملك. بدون قوالب جاهزة، بدون اختصارات، بدون تكاليف خفية.</span>
+      </p>
+    </div>
+
+    <!-- Discount banner -->
+    {showDiscount && (
+      <div
+        class="mb-10 rounded-2xl p-5 text-center shadow-lg"
+        style="background: linear-gradient(135deg, #059669 0%, #7c3aed 100%);"
+      >
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+          <span class="text-2xl" aria-hidden="true">🎉</span>
+          <div>
+            <span class="text-white font-bold text-lg">{discountLabel} </span>
+            <span class="text-emerald-200 font-medium">
+              <span data-lang="en">— Save {discount}% on all packages!</span>
+              <span data-lang="ar">— وفّر {discount}% على جميع الباقات!</span>
+            </span>
+          </div>
+          <span class="inline-flex items-center px-3 py-1 bg-white/20 backdrop-blur rounded-full text-white text-sm font-bold border border-white/30">
+            {discount}% OFF
+          </span>
+        </div>
+        <p class="text-emerald-200 text-xs mt-2">
+          <span data-lang="en">Limited time · Contact us before the offer expires</span>
+          <span data-lang="ar">لفترة محدودة · تواصل معنا قبل انتهاء العرض</span>
+        </p>
+      </div>
+    )}
+
+    <!-- Cards grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+      {packages.map((pkg) => {
+        const c = colorConfig[pkg.color] || colorConfig.blue;
+        const discountedPrice = (pkg.price && showDiscount && !pkg.is_custom)
+          ? calcDiscounted(pkg.price, discount)
+          : null;
+        const savings = pkg.price && discountedPrice ? pkg.price - discountedPrice : 0;
+
+        return (
+          <div
+            class={`relative bg-white rounded-2xl border-2 flex flex-col overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${pkg.is_popular ? 'border-violet-300 shadow-lg shadow-violet-100' : 'border-slate-100 shadow-sm'}`}
+          >
+            <!-- Colored top bar -->
+            <div class={`h-1.5 w-full ${c.topBar}`}></div>
+
+            <!-- Most Popular badge -->
+            {pkg.is_popular && (
+              <div class="absolute top-5 right-4">
+                <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-violet-600 text-white text-xs font-bold rounded-full shadow-md">
+                  ★ <span data-lang="en">Most Popular</span><span data-lang="ar">الأكثر طلباً</span>
+                </span>
+              </div>
+            )}
+
+            <!-- Discount percentage badge (top left) -->
+            {showDiscount && !pkg.is_custom && (
+              <div class="absolute top-5 left-4">
+                <span class={`inline-flex items-center px-2 py-0.5 text-xs font-bold rounded-full ${c.badgeBg} ${c.badgeText}`}>
+                  -{discount}%
+                </span>
+              </div>
+            )}
+
+            <div class="p-6 flex flex-col flex-1">
+              <!-- Name & tagline -->
+              <div class="mb-4 mt-4">
+                <h3 class="text-xl font-extrabold text-slate-900">
+                  <span data-lang="en">{pkg.name}</span>
+                  {pkg.name_ar && <span data-lang="ar">{pkg.name_ar}</span>}
+                </h3>
+                <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+                  <span data-lang="en">{pkg.tagline}</span>
+                  {pkg.tagline_ar && <span data-lang="ar">{pkg.tagline_ar}</span>}
+                </p>
+              </div>
+
+              <!-- Price block -->
+              <div class="mb-5 pb-5 border-b border-slate-100">
+                {pkg.is_custom ? (
+                  <div>
+                    <p class="text-xs text-slate-400 mb-1">
+                      <span data-lang="en">Starting from</span>
+                      <span data-lang="ar">يبدأ من</span>
+                    </p>
+                    <div class="flex items-baseline gap-1">
+                      <span class="text-4xl font-extrabold text-slate-900">${pkg.price}</span>
+                      <span class="text-slate-400 text-xl font-semibold">+</span>
+                    </div>
+                    {showDiscount && (
+                      <p class={`text-xs font-semibold mt-1.5 ${c.badgeText}`}>
+                        🏷 <span data-lang="en">Get {discount}% off — contact us for a quote</span>
+                        <span data-lang="ar">احصل على {discount}% خصم — تواصل معنا للحصول على عرض</span>
+                      </p>
+                    )}
+                  </div>
+                ) : discountedPrice ? (
+                  <div>
+                    <div class="flex items-center gap-2 mb-1">
+                      <span class="text-slate-400 line-through text-base">${pkg.price}</span>
+                      {savings > 0 && (
+                        <span class={`text-xs font-bold px-2 py-0.5 rounded-full ${c.badgeBg} ${c.badgeText}`}>
+                          <span data-lang="en">Save ${savings}</span>
+                          <span data-lang="ar">وفّر ${savings}</span>
+                        </span>
+                      )}
+                    </div>
+                    <div class="flex items-baseline gap-1">
+                      <span class="text-4xl font-extrabold text-slate-900">${discountedPrice}</span>
+                      <span class="text-slate-400 text-sm font-medium">
+                        <span data-lang="en">/project</span>
+                        <span data-lang="ar">/مشروع</span>
+                      </span>
+                    </div>
+                  </div>
+                ) : (
+                  <div class="flex items-baseline gap-1">
+                    <span class="text-4xl font-extrabold text-slate-900">${pkg.price}</span>
+                    <span class="text-slate-400 text-sm font-medium">
+                      <span data-lang="en">/project</span>
+                      <span data-lang="ar">/مشروع</span>
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              <!-- Focus tag -->
+              <div class={`inline-flex self-start items-center px-3 py-1 rounded-lg text-xs font-semibold mb-5 ${c.focusBg} ${c.focusText}`}>
+                <span data-lang="en">{pkg.focus}</span>
+                {pkg.focus_ar && <span data-lang="ar">{pkg.focus_ar}</span>}
+              </div>
+
+              <!-- Features -->
+              <div class="flex-1 mb-6">
+                <ul class="space-y-2.5" data-lang="en">
+                  {pkg.features.map((feature) => (
+                    <li class="flex items-start gap-2.5">
+                      <svg class={`w-4 h-4 mt-0.5 flex-shrink-0 ${c.checkColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span class="text-sm text-slate-600 leading-snug">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                {pkg.features_ar && pkg.features_ar.length > 0 && (
+                  <ul class="space-y-2.5" data-lang="ar">
+                    {pkg.features_ar.map((feature) => (
+                      <li class="flex items-start gap-2.5">
+                        <svg class={`w-4 h-4 mt-0.5 flex-shrink-0 ${c.checkColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span class="text-sm text-slate-600 leading-snug">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+
+              <!-- CTA button -->
+              <a
+                href="#contact"
+                class={`w-full flex items-center justify-center gap-2 px-4 py-3 text-white font-bold rounded-xl text-sm transition-all duration-200 ${c.btnBg} ${c.btnHover} hover:-translate-y-0.5`}
+              >
+                {pkg.is_custom ? (
+                  <>
+                    <span data-lang="en">Get Custom Quote</span>
+                    <span data-lang="ar">احصل على عرض مخصص</span>
+                  </>
+                ) : (
+                  <>
+                    <span data-lang="en">Get Started</span>
+                    <span data-lang="ar">ابدأ الآن</span>
+                  </>
+                )}
+                <svg class="w-4 h-4 arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+
+    <!-- Footer note -->
+    <p class="text-center text-sm text-slate-400 mt-8">
+      <span data-lang="en">
+        All packages are one-time project fees. Post-launch support is included in each package.
+        <a href="#contact" class="text-emerald-600 hover:underline font-medium ml-1">Contact us</a>
+        for monthly retainer options.
+      </span>
+      <span data-lang="ar">
+        جميع الباقات رسوم مشروع لمرة واحدة. الدعم بعد الإطلاق مشمول في كل باقة.
+        <a href="#contact" class="text-emerald-600 hover:underline font-medium mr-1">تواصل معنا</a>
+        لخيارات الاشتراك الشهري.
+      </span>
+    </p>
+  </div>
+</section>
